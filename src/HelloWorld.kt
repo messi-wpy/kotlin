@@ -94,3 +94,4 @@ fun iterateMap(map:TreeMap<Char,String>){
         println("$letter = $binary")
     }
 }
+
