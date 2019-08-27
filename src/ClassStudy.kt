@@ -59,9 +59,45 @@ class user_3{
     val age:String="0"
 }
 
+//by---使用类委托
+class CountingSet<T>(val innerSet:MutableCollection<T>):MutableCollection<T> by innerSet{
+    private var added =0
+
+    override fun add(element: T): Boolean {
+        added++;
+        print(added)
+        return innerSet.add(element)
+    }
+
+    override fun addAll(elements: Collection<T>): Boolean {
+        added+=elements.size
+        println(added)
+        return  innerSet.addAll(elements)
+    }
+
+
+}
 fun main(){
     val user2=user_2("wpy",20)
     println(user2.address)
+    val mySet=CountingSet(HashSet<Int>())
+    mySet.add(2)
+    mySet.addAll(listOf<Int>(1,2,3))
+    println(mySet.contains(4))
+
+}
+
+//伴生对象--->就是一个类中静态字段，但可以访问private成员，就这点用处
+class CompanionTest(val name: String){
+    private var age=20
+    companion object{
+        fun cAge(){
+            val temp=CompanionTest("sss")
+            //可以访问private修饰的age，
+            println(temp.age)
+        }
+
+    }
 
 }
 
