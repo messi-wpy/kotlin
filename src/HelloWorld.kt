@@ -27,7 +27,7 @@ var answers="i am student"
 
 
 //kotlin中建立这种类似c中struct的值对象很方便把
-class Person(val name: String,val age:Int)
+class Person (val name: String,val age:Int)
 class Rectangle(val height:Int,val width:Int){
     val isSquare:Boolean
     get() = height==width

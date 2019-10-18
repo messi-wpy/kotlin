@@ -26,6 +26,14 @@ fun sequenceTest(){
 
 
 }
+fun defParameter(name:String="def",age:Int){
+}
+fun defParameter2(name:String,age: Int=0){}
+fun testdef(){
+    defParameter2("w",2)
+    defParameter2("www")
+    //defParameter(2)
+}
 
 fun File.isInsideHiddenDirectory()= generateSequence (this){it.parentFile  }.any{it.isHidden}
 
@@ -45,6 +53,7 @@ fun alphabet2()= with(StringBuilder()){
     for (letter in 'A'..'Z'){
         append(letter)
     }
+
     append("\nNow this is alphabet")
     toString()
 }
@@ -63,3 +72,19 @@ fun main(){
     print(alphabet())
 
 }
+
+class Student(val school:String,val name: String){
+    var grade:Int=0
+    constructor(num:Int,name: String):this("www",name){
+        grade=num
+    }
+    fun show()= print("school:$school,name:$name")
+    fun test(){
+        val list= listOf(21,40,11,33,78)
+        list.filter { it%3==0 }.forEach{ println(it)}
+
+    }
+}
+
+
+

@@ -24,7 +24,7 @@ class Button:Clickable,Focusable{
 }
 //构造函数练习
 //默认主构造函数---一定会被调用
-class user_1(val name:String,val age:Int)
+open class user_1(val name:String,val age:Int)
 
 open class user_2(var name:String="def",val age:Int=0){
     private var school:String
@@ -54,7 +54,7 @@ open class user_2(var name:String="def",val age:Int=0){
 
 }
 
-class user_3:user_2(){
+class user_3():user_1("www",2){
    val id="00001"
 }
 
