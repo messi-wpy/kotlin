@@ -10,7 +10,9 @@ fun main(){
     map.put(23,"123")
     map.put(2222,"cccc222")
     println(map.get(23))
-    println(map.floor(1))
+    println(map.floor(222))
+    println(map.size())
+    println(map.select(0))
 
 }
 class BST<Key,Value>(val compare:(Key,Key)->Int) {
@@ -61,12 +63,19 @@ class BST<Key,Value>(val compare:(Key,Key)->Int) {
     fun contains():Boolean{
         return  false
     }
+
     fun size(tree:Node<Key,Value>?):Int{
-        return 0;
+
+        if (tree==null)
+            return 0
+        val left=size(tree.left)
+        val right=size(tree.right)
+
+        return left+right+1;
     }
     fun size():Int{
 
-        return 0;
+        return (root?.n?:-1)+1;
     }
 
     fun min():Key?{
@@ -108,10 +117,23 @@ class BST<Key,Value>(val compare:(Key,Key)->Int) {
     fun rank(key: Key):Int{
 
     }
-    //排名为k的键
-    fun select(k:Int):Key{
+    */
 
+    //排名为k的键
+    fun select(k:Int):Key?{
+        fun selectImpl(node: Node<Key,Value>?,k:Int):Key?{
+            if (node==null)
+                return null
+            val length=size(node.left)
+            return  when{
+                length>k->selectImpl(node.left,k)
+                length<k->selectImpl(node.right,k-length-1)
+                else ->return node.key
+            }
+
+
+        }
+        return selectImpl(root,k)
     }
-*/
 
 }
