@@ -93,6 +93,9 @@ class BST<Key, Value>(val compare: (Key, Key) -> Int) {
                     val temp=root.right?.let { min(it) }
                     temp?.left=root.left
                     temp?.right=deleteMinImpl(root.right)
+                    temp?.let {
+                        temp.n=size(temp.left)+size(temp.right)+1
+                    }
                     temp
                 }
 
@@ -105,7 +108,7 @@ class BST<Key, Value>(val compare: (Key, Key) -> Int) {
     }
 
     fun isEmpty(): Boolean {
-        return false
+        return root==null
     }
 
     fun contains(): Boolean {
